@@ -41,7 +41,7 @@ bullet_img = pygame.image.load("bullet.png")
 bulletX = 0
 bulletY = 550
 bulletX_chng = 0
-bulletY_chng = 0.8
+bulletY_chng = 1
 bullet_state = "ready"
 
 #score
@@ -99,18 +99,18 @@ while running:
     if playerX >=732:
         playerX = 732   
     for i in range(num_of_enemies):  
-        if enemyY[i]  >250:
+        if enemyY[i] >500:
             for j in range(num_of_enemies):
                 enemyY[j] = 2000
             game_over_text()
             break
         enemyX[i] += enemyX_chng[i]
         if enemyX[i] <=4:
-            enemyX_chng[i] = 0.3
+            enemyX_chng[i] = 0.5
             enemyY[i] = enemyY[i] + enemyY_chng[i]
         if enemyX[i] >=732:
             enemyY[i] = enemyY[i] + enemyY_chng[i]
-            enemyX_chng[i] = -0.3
+            enemyX_chng[i] = -0.5
         collision = iscollision(enemyX[i],enemyY[i],bulletX,bulletY)
         if collision:
             col_sound = mixer.Sound('explosion.wav')
